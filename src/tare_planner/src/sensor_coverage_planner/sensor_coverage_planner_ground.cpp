@@ -36,6 +36,8 @@ bool PlannerParameters::ReadParameters(ros::NodeHandle& nh)
   sub_reset_waypoint_topic_ = misc_utils_ns::getParam<std::string>(nh, "sub_reset_waypoint_topic_", "/reset_waypoint");
   pub_exploration_finish_topic_ =
       misc_utils_ns::getParam<std::string>(nh, "pub_exploration_finish_topic_", "exploration_finish");
+  pub_reached_home_topic_ =
+      misc_utils_ns::getParam<std::string>(nh, "pub_reached_home_topic_", "reached_home");
   pub_runtime_breakdown_topic_ =
       misc_utils_ns::getParam<std::string>(nh, "pub_runtime_breakdown_topic_", "runtime_breakdown");
   pub_runtime_topic_ = misc_utils_ns::getParam<std::string>(nh, "pub_runtime_topic_", "/runtime");
@@ -232,6 +234,7 @@ bool SensorCoveragePlanner3D::initialize(ros::NodeHandle& nh, ros::NodeHandle& n
   exploration_path_publisher_ = nh.advertise<nav_msgs::Path>("exploration_path", 1);
   waypoint_pub_ = nh.advertise<geometry_msgs::PointStamped>(pp_.pub_waypoint_topic_, 2);
   exploration_finish_pub_ = nh.advertise<std_msgs::Bool>(pp_.pub_exploration_finish_topic_, 2);
+  home_reached_pub_ = nh.advertise<std_msgs::Bool>(pp_.pub_reached_home_topic_, 2);
   runtime_breakdown_pub_ = nh.advertise<std_msgs::Int32MultiArray>(pp_.pub_runtime_breakdown_topic_, 2);
   runtime_pub_ = nh.advertise<std_msgs::Float32>(pp_.pub_runtime_topic_, 2);
   momentum_activation_count_pub_ = nh.advertise<std_msgs::Int32>(pp_.pub_momentum_activation_count_topic_, 2);
@@ -1225,6 +1228,13 @@ void SensorCoveragePlanner3D::PublishExplorationState()
   exploration_finish_pub_.publish(exploration_finished_msg);
 }
 
+void SensorCoveragePlanner3D::PublishHomeReachedState()
+{
+  std_msgs::Bool home_reached_msg;
+  home_reached_msg.data = at_home_;
+  home_reached_pub_.publish(home_reached_msg);
+}
+
 void SensorCoveragePlanner3D::PrintExplorationStatus(std::string status, bool clear_last_line)
 {
   if (clear_last_line)
@@ -1367,6 +1377,7 @@ void SensorCoveragePlanner3D::execute(const ros::TimerEvent&)
     pd_.exploration_path_ = ConcatenateGlobalLocalPath(global_path, local_path);
 
     PublishExplorationState();
+    PublishHomeReachedState();
 
     lookahead_point_update_ = GetLookAheadPoint(pd_.exploration_path_, global_path, pd_.lookahead_point_);
     PublishWaypoint();
