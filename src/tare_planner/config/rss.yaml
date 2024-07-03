@@ -13,7 +13,7 @@ pub_exploration_finish_topic_ : exploration_finish
 pub_reached_home_topic_ : reached_home
 pub_runtime_breakdown_topic_ : runtime_breakdown
 pub_runtime_topic_ : /runtime
-pub_waypoint_topic_ : /way_point
+pub_waypoint_topic_ : /exploration/way_point
 pub_momentum_activation_count_topic_ : momentum_activation_count
 
 kAutoStart : true # when true, will auto start the exploration. If its false, then it'll wait to listen to true in /start_exploration before starting.
