@@ -23,13 +23,13 @@ kCheckTerrainCollision : true
 kExtendWayPoint : true
 kUseLineOfSightLookAheadPoint : true
 kNoExplorationReturnHome : true
-kExtendWayPointDistanceBig : 8.0
-kExtendWayPointDistanceSmall : 3.5
+kExtendWayPointDistanceBig : 4.0 # Set small if the waypoint breaches boundaries.
+kExtendWayPointDistanceSmall : 2.0 # Set small if the waypoint breaches boundaries.
 kKeyposeCloudDwzFilterLeafSize : 0.2
 kRushHomeDist : 2.5 # Don't set to small in cluttered environment, can be big for open spaces.
 kAtHomeDistThreshold : 0.3 # Considers itself at home within this distance of the home (starting point of exploration)
 kTerrainCollisionThreshold : 0.5 
-kLookAheadDistance : 8
+kLookAheadDistance : 4.0 # Set small if the waypoint breaches boundaries.
 kUseMomentum : false 
 kDirectionChangeCounterThr : 6
 kDirectionNoChangeCounterThr : 5
@@ -94,8 +94,8 @@ kViewPointHeightFromTerrainChangeThreshold : 0.6
 kCheckDynamicObstacleCollision : false
 kCollisionFrameCountMax : 3
 
-kSensorRange : 7.5 # How many points I can cover from a viewpoint. Sensor range of the viewpoint. Decides the coverage range of the viewpoint. Basically gives the information gain from a certain viewpoint. Not exact, but roughly that.
-kNeighborRange : 1.0 # Within how much distance of the robot you mark the viewpoint as visited. Should scale together with the local range (the viewpoint grid size). Set to small to go really close to something.
+kSensorRange : 7.5 #How many points I can cover from a viewpoint. Sensor range of the viewpoint. Decides the coverage range of the viewpoint. Basically gives the information gain from a certain viewpoint. Not exact, but roughly that.
+kNeighborRange : 2.5 # Within how much distance of the robot you mark the viewpoint as visited. Should scale together with the local range (the viewpoint grid size). Set to small to go really close to something.
 kCoverageOcclusionThr : 0.3 # 
 kCoverageDilationRadius : 0.5
 
