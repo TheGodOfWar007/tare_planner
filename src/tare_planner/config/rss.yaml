@@ -94,7 +94,7 @@ kCheckDynamicObstacleCollision : false
 kCollisionFrameCountMax : 3
 
 kSensorRange : 7.5 # How many points I can cover from a viewpoint. Sensor range of the viewpoint. Decides the coverage range of the viewpoint. Basically gives the information gain from a certain viewpoint. Not exact, but roughly that.
-kNeighborRange : 0.8 # Within how much distance of the robot you mark the viewpoint as visited. Should scale together with the local range (the viewpoint grid size). Set to small to go really close to something.
+kNeighborRange : 1.0 # Within how much distance of the robot you mark the viewpoint as visited. Should scale together with the local range (the viewpoint grid size). Set to small to go really close to something.
 kCoverageOcclusionThr : 0.3 # 
 kCoverageDilationRadius : 0.5
 
