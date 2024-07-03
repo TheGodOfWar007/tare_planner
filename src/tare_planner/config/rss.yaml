@@ -25,7 +25,7 @@ kNoExplorationReturnHome : true
 kExtendWayPointDistanceBig : 8.0
 kExtendWayPointDistanceSmall : 3.5
 kKeyposeCloudDwzFilterLeafSize : 0.2
-kRushHomeDist : 1.5 # Don't set to small in cluttered environment, can be big for open spaces.
+kRushHomeDist : 2.5 # Don't set to small in cluttered environment, can be big for open spaces.
 kAtHomeDistThreshold : 0.3 # Considers itself at home within this distance of the home (starting point of exploration)
 kTerrainCollisionThreshold : 0.5 
 kLookAheadDistance : 8
@@ -70,12 +70,12 @@ keypose_graph/kAddEdgeCollisionCheckRadius : 0.4
 keypose_graph/kAddEdgeCollisionCheckPointNumThr : 1
 
 # ViewPointManager - Viewpoint grid is the green frame surrounding the robot.
-viewpoint_manager/number_x : 20 # How many viewpoints per dimension do you choose.
-viewpoint_manager/number_y : 20 # This basically sets the horizon for local planner.
+viewpoint_manager/number_x : 50 # How many viewpoints per dimension do you choose.
+viewpoint_manager/number_y : 50 # This basically sets the horizon for local planner.
 viewpoint_manager/number_z : 1
-viewpoint_manager/resolution_x : 0.2 # resolution*grid_size is the length of the box. SI Units.
-viewpoint_manager/resolution_y : 0.2
-viewpoint_manager/resolution_z : 0.2
+viewpoint_manager/resolution_x : 0.6 # resolution*grid_size is the length of the box. SI Units.
+viewpoint_manager/resolution_y : 0.6
+viewpoint_manager/resolution_z : 0.6
 kConnectivityHeightDiffThr : 0.25
 kGreedyViewPointSampleRange : 3
 kLocalPathOptimizationItrMax : 10
@@ -93,8 +93,8 @@ kViewPointHeightFromTerrainChangeThreshold : 0.6
 kCheckDynamicObstacleCollision : false
 kCollisionFrameCountMax : 3
 
-kSensorRange : 1.5 # How many points I can cover from a viewpoint. Sensor range of the viewpoint. Decides the coverage range of the viewpoint. Basically gives the information gain from a certain viewpoint. Not exact, but roughly that.
-kNeighborRange : 1.0 # Within how much distance of the robot you mark the viewpoint as visited. Should scale together with the local range (the viewpoint grid size). Set to small to go really close to something.
+kSensorRange : 7.5 # How many points I can cover from a viewpoint. Sensor range of the viewpoint. Decides the coverage range of the viewpoint. Basically gives the information gain from a certain viewpoint. Not exact, but roughly that.
+kNeighborRange : 0.8 # Within how much distance of the robot you mark the viewpoint as visited. Should scale together with the local range (the viewpoint grid size). Set to small to go really close to something.
 kCoverageOcclusionThr : 0.3 # 
 kCoverageDilationRadius : 0.5
 
