@@ -79,6 +79,7 @@ struct PlannerParameters
   std::string sub_reset_waypoint_topic_;
 
   std::string pub_exploration_finish_topic_;
+  std::string pub_reached_home_topic_;
   std::string pub_runtime_breakdown_topic_;
   std::string pub_runtime_topic_;
   std::string pub_waypoint_topic_;
@@ -229,6 +230,7 @@ private:
   ros::Publisher exploration_path_publisher_;
   ros::Publisher waypoint_pub_;
   ros::Publisher exploration_finish_pub_;
+  ros::Publisher home_reached_pub_;
   ros::Publisher runtime_breakdown_pub_;
   ros::Publisher runtime_pub_;
   ros::Publisher momentum_activation_count_pub_;
@@ -268,6 +270,7 @@ private:
   void PublishRuntime();
   double GetRobotToHomeDistance();
   void PublishExplorationState();
+  void PublishHomeReachedState();
   void PublishWaypoint();
   bool GetLookAheadPoint(const exploration_path_ns::ExplorationPath& local_path,
                          const exploration_path_ns::ExplorationPath& global_path, Eigen::Vector3d& lookahead_point);
